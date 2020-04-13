@@ -1,0 +1,280 @@
+#! /usr/bin/python3.8
+import os
+import re
+import time
+import sys
+os.system("clear")
+print ("\033[0m\033[32mBeta kerneldev version 0.0.0.2 by Artyom(c4md/SKILT)")
+time.sleep(2)
+os.system("mkdir kernel")
+architecture = input("\033[0m\033[32mPlease, select your architecture and input number of this.\n1. arm64 or aarch64\nInput number: ")
+if architecture == "1":
+	processor = "arm64"
+else:
+	print ("\033[0m\033[31mUncorrect number!")
+	os.system("tput sgr0")
+	sys.exit()
+codename = input("\033[0m\033[32mPlease, enter the code name of your phone. If you do not know this, enter in the browser: <model of your device> code name. Example: rolex, s2.\nInput text: ")
+time.sleep(2)
+cores = input("\033[0m\033[32mPlease enter the number of cores of your processor. Input number: ")
+necessary = input("\033[0m\033[32mDo you want to install and/or update necessary tools? Write (Y/n): ")
+if necessary == "Y":
+	print ("\033[0m\033[31mPlease, wait...")
+	time.sleep(2)
+	os.system("tput sgr0")
+	print ("\033[0m\033[32m")
+	os.system("apt-get install adb android-sdk-platform-tools git-core ark tar make gnupg flex bc bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip -y")
+	print ("\033[0m\033[31mDone.")
+	os.system("tput sgr0")
+elif necessary == "y":
+	print ("\033[0m\033[31mPlease, wait...")
+	time.sleep(2)
+	os.system("tput sgr0")
+	print ("\033[0m\033[32m")
+	os.system("apt-get install adb android-sdk-platform-tools git-core ark tar make gnupg flex bc bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip -y")
+	print ("\033[0m\033[31mDone")
+	os.system("tput sgr0")
+elif necessary == "N":
+	print ("\033[0m\033[31mOK.")
+	os.system("tput sgr0")
+elif necessary == "n":
+	print ("\033[0m\033[31mOK.")
+	os.system("tput sgr0")
+else:
+	print ("\033[0m\033[31mYou must to write y or n.")
+	os.system("tput sgr0")
+	sys.exit()
+time.sleep(2)
+toolchain = input("\033[0m\033[32mDo you want to install toolchain? Write (Y/n): ")
+if toolchain == "Y":
+	print ("\033[0m\033[31mOK.")
+	os.system("tput sgr0")
+	i = 1
+elif toolchain == "y":
+	print ("\033[0m\033[31mOK.")
+	os.system("tput sgr0")
+	i = 1
+elif toolchain == "N":
+	print ("\033[0m\033[31mOK.")
+	os.system("tput sgr0")
+	i = 0
+elif toolchain == "n":
+	print ("\033[0m\033[31mOK.")
+	os.system("tput sgr0")
+	i = 0
+else:
+	print ("\033[0m\033[31mYou must to write y or n.")
+	os.system("tput sgr0")
+	sys.exit()
+if i == 1:
+	time.sleep(2)
+	if architecture == "1":
+		arm64toolchain = input("\033[0m\033[32mPlease, select the toolchain and input the number of this.\n1. gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz\n2. gcc-linaro-6.5.0-2018.12-i686_aarch64-linux-gnu.tar.xz\n3. gcc-linaro-5.5.0-2017.10-i686_aarch64-linux-gnu.tar.xz\n4. gcc-linaro-4.9.4-2017.01-i686_aarch64-linux-gnu.tar.xz\nInput number: ")
+	else:
+		print ("\033[0m\033[31mThis is uncorrect variant.")
+		sys.exit()
+	time.sleep(2)
+	if arm64toolchain == "1":
+		print ("\033[0m\033[32mInstalling gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz...")
+		time.sleep(2)
+		os.system("wget https://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/aarch64-linux-gnu/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		os.system("tar -xf gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		os.system("rm -rf gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		print ("\033[0m\033[31mDone.")
+	elif arm64toolchain == "2":
+		print ("\033[0m\033[32mInstalling gcc-linaro-6.5.0-2018.12-i686_aarch64-linux-gnu.tar.xz...")
+		time.sleep(2)
+		os.system("wget https://releases.linaro.org/components/toolchain/binaries/6.5-2018.12/aarch64-linux-gnu/gcc-linaro-6.5.0-2018.12-i686_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		os.system("tar -xf gcc-linaro-6.5.0-2018.12-i686_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		os.system("rm -rf gcc-linaro-6.5.0-2018.12-i686_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		print ("\033[0m\033[31mDone.")
+	elif arm64toolchain == "3":
+		print ("\033[0m\033[32mInstalling gcc-linaro-5.5.0-2017.10-i686_aarch64-linux-gnu.tar.xz...")
+		time.sleep(2)
+		os.system("wget https://releases.linaro.org/components/toolchain/binaries/5.5-2017.10/aarch64-linux-gnu/gcc-linaro-5.5.0-2017.10-i686_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		os.system("tar -xf gcc-linaro-5.5.0-2017.10-i686_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		os.system("rm -rf gcc-linaro-5.5.0-2017.10-i686_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		print ("\033[0m\033[31mDone.")
+	elif arm64toolchain == "4":
+		print ("\033[0m\033[32mInstalling gcc-linaro-4.9.4-2017.01-i686_aarch64-linux-gnu.tar.xz...")
+		time.sleep(2)
+		os.system("wget https://releases.linaro.org/components/toolchain/binaries/4.9-2017.01/aarch64-linux-gnu/gcc-linaro-4.9.4-2017.01-i686_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		os.system("tar -xf gcc-linaro-4.9.4-2017.01-i686_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		os.system("rm -rf gcc-linaro-4.9.4-2017.01-i686_aarch64-linux-gnu.tar.xz")
+		time.sleep(2)
+		print ("\033[0m\033[31mDone.")
+	else:
+		print ("\033[0m\033[31mUncorrect number!")
+		os.system("tput sgr0")
+		sys.exit()
+time.sleep(2)
+doyouwantkernel = input("\033[0m\033[32mDo you want to install kernel? Write (Y/n): ")
+if doyouwantkernel == "Y":
+	wantkernel = 1
+elif doyouwantkernel == "y":
+	wantkernel = 1
+elif doyouwantkernel == "N":
+	print ("\033[0m\033[31mOK.")
+	wantkernel = 0
+elif doyouwantkernel == "n":
+	print ("\033[0m\033[31mOK.")
+	wantkernel = 0
+else:
+	print ("\033[0m\033[31mYou must to write y or n.")
+	os.system("tput sgr0")
+	sys.exit()
+if wantkernel == 1:
+	time.sleep(2)
+	linkkernel = input("\033[0m\033[32mEnter the link to your kernel. Example: https://github.com/Nick89786/android_kernel_xiaomi_msm8917/ , https://github.com/LeEcoDevs/android_kernel_leeco_msm8976/ . Warning! If you have </tree/> in the link, then please indicate </tree/> < -b > instead. Example: Was: https://github.com/LeEcoDevs/android_kernel_leeco_msm8976/tree/lineage-16.0. Now: https://github.com/LeEcoDevs/android_kernel_leeco_msm8976/ -b lineage-16.0.\nInput link: ")
+	time.sleep(2)
+	os.system("git clone " + linkkernel + " kernel")
+nametoolchain = os.system("find *gcc*")
+time.sleep(2)
+print ("\033[0m\033[31mWriting  the neccesary code to your .bashrc...\033[32m")
+time.sleep(2)
+bashrc_file = open('/root/.bashrc', 'a')
+time.sleep(2)
+if processor == "arm64":
+	bashrc_text_one = 'export ARCH=' + processor
+	bashrc_text_two = 'export SUBARCH=' + processor
+	bashrc_text_three = 'export CROSS_COMPILE=/root/kerneldev/' + str(nametoolchain) + '/bin/aarch64-linux-gnu-'
+	bashrc_file.write(bashrc_text_one + "\n" + bashrc_text_two + "\n" + bashrc_text_three)
+	bashrc_file.close()
+print ("\033[0m\033[31mDone.")
+os.system(". /root/.bashrc")
+time.sleep(2)
+time.sleep(2)
+os.chdir("kernel")
+aircrackngversion = input("\033[0m\033[32mWhat version of patch of aircrack-ng do you want to choose?\n1\n2\nInput number: ")
+if aircrackngversion == "1":
+	print ("\033[0m\033[32mDownloading patch...")
+	os.system("wget http://patches.aircrack-ng.org/mac80211.compat08082009.wl_frag+ack_v1.patch")
+	print ("\033[0m\033[32mPatching...")
+	os.system("patch -p1 < mac80211.compat08082009.wl_frag+ack_v1.patch")
+	print ("\033[0m\033[31mDone!")
+elif aircrackngversion == "2":
+	print ("\033[0m\033[32mDownloading patch...")
+	os.system("wget https://aur.archlinux.org/cgit/aur.git/tree/50-1-mac80211.compat08082009.wl_frag+ack_v1.patch?h=backports-patches-git")
+	print ("\033[0m\033[32mPatching...")
+	os.system("patch -p1 < 50-1-mac80211.compat08082009.wl_frag+ack_v1.patch?h=backports-patches-git")
+	print ("\033[0m\033[31mDone!")
+else :
+	print ("\033[0m\033[31mUncorrect number!")
+	os.system("tput sgr0")
+	sys.exit()
+print ("\033[0m\033[31mMaking clean...\033[32m")
+time.sleep(2)
+os.system("make clean")
+time.sleep(2)
+print ("\033[0m\033[31mDone!\033[32m")
+print ("\033[0m\033[31mMaking mrpropper...\033[32m")
+time.sleep(2)
+os.system("make mrpropper")
+time.sleep(2)
+print ("\033[0m\033[31mDone!\033[32m")
+print ("\033[0m\033[31mChecking your defconfig...\033[32m")
+time.sleep(2)
+os.chdir("arch/arm64/configs")
+defconfig = os.system("find *" + codename + "*")
+os.chdir("")
+os.chdir("kerneldev/kernel")
+print ("\033[0m\033[31mMaking defconfig...\033[32m")
+time.sleep(2)
+os.system("make " + defconfig)
+time.sleep(2)
+print ("\033[0m\033[31mDone!\033[32m")
+print ("\033[0m\033[31mMaking menuconfig...\033[32m")
+time.sleep(2)
+os.system("make menuconfig")
+time.sleep(2)
+print ("\033[0m\033[31mSaving...\033[32m")
+time.sleep(2)
+os.system(".conf")
+time.sleep(2)
+print ("\033[0m\033[31mDone!\033[32m")
+print ("\033[0m\033[31mCopying defconfig...\033[32m")
+time.sleep(2)
+os.system("cp .config arch/arm64/configs/c4md_defconfig")
+time.sleep(2)
+print ("\033[0m\033[31mDone!\033[32m")
+print ("\033[0m\033[31mMaking clean...\033[32m")
+time.sleep(2)
+os.system("make clean")
+time.sleep(2)
+print ("\033[0m\033[31mDone!\033[32m")
+print ("\033[0m\033[31mMaking mrpropper...\033[32m")
+time.sleep(2)
+os.system("make mrpropper")
+time.sleep(2)
+print ("\033[0m\033[31mDone!\033[32m")
+print ("\033[0m\033[31mMaking new defconfig...\033[32m")
+time.sleep(2)
+os.system("make c4md_defconfig")
+time.sleep(2)
+print ("\033[0m\033[31mDone!\033[32m")
+print ("\033[0m\033[31mBuilding your kernel\033[32m")
+core = cores + 1
+time.sleep(2)
+os.system("make -j" + core)
+time.sleep(2)
+doyouhaveanyerrors = input("\033[0m\033[32mThe assembly has been completed. Have you had any mistakes? Write (Y/n): ")
+if doyouhaveanyerrors == "Y":
+	errors = input("\033[0m\033[32mYou error is\n1. [drivers/video/msm/msm_dba/msm_dba.c:25:30: fatal error: msm_dba_internal.h: No such file or directory #include <msm_dba_internal.h>]\n? Please, input the number of error: ")
+	if errors == "1":
+		os.chdir("drivers/video/msm/msm_dba")
+		with open ('msm_dba.c', 'r') as f:
+			old_data = f.read()
+		new_data = old_data.replace('#include <msm_dba_internal.h>', '#include "msm_dba_internal.h"')
+		with open ('msm_dba.c', 'w') as f:
+			f.write(new_data)
+		print ("\033[0m\033[32mDone! Please run the script again.")
+		os.system("tput sgr0")
+		sys.exit()
+	else:
+		print ("\033[0m\033[31mYou must to write y or n.")
+		os.system("tput sgr0")
+		sys.exit()
+elif doyouhaveanyerrors == "y":
+	errors = input("\033[0m\033[32mYou error is\n1. [drivers/video/msm/msm_dba/msm_dba.c:25:30: fatal error: msm_dba_internal.h: No such file or directory #include <msm_dba_internal.h>]\n? Please, input the number of error: ")
+	if errors == "1":
+		os.chdir("drivers/video/msm/msm_dba")
+		with open ('msm_dba.c', 'r') as f:
+			old_data = f.read()
+		new_data = old_data.replace('#include <msm_dba_internal.h>', '#include "msm_dba_internal.h"')
+		with open ('msm_dba.c', 'w') as f:
+			f.write(new_data)
+		print ("\033[0m\033[32mDone! Please run the script again.")
+		os.system("tput sgr0")
+		sys.exit()
+	else:
+		print ("\033[0m\033[31mYou must to write y or n.")
+		os.system("tput sgr0")
+		sys.exit()
+elif doyouhaveanyerrors == "N":
+	qpqp = 1
+elif doyouhaveanyerrors == "n":
+	qpqp = 1
+else:
+	print ("\033[0m\033[31mYou must to write y or n.")
+	os.system("tput sgr0")
+	sys.exit()
+print ("\033[0m\033[31mDone!\033[32m")
+print ("\033[0m\033[32mCreating zlmage...")
+time.sleep(2)
+os.system("cat arch/arm64/boot/Image.gz-dtb > zImage")
+time.sleep(2)
+print ("\033[0m\033[31mDone!\033[32m")
+print ("\033[0m\033[32mThe zlmage creation is complete.")
+os.system("tput sgr0")
+sys.exit()
